@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./../index.css";
 const Player = (props) => {
-  const {
-    playerName = "PLAYER 1",
-    playerSymbol = "X",
-    buttonName = "Edit",
-    isFocused,
-    setPlayerDetails,
-  } = props;
+  const { playerName = "PLAYER 1", playerSymbol = "X", buttonName = "Edit", isFocused, setPlayerDetails } = props;
 
   const [playerHandler, setPlayerHandler] = useState({
     playerName,
@@ -70,15 +64,20 @@ const Player = (props) => {
       <button onClick={() => handleButtonClick("cancel")}>Cancel</button>
     </>
   );
-  console.log("isFocused", isFocused);
   return (
-    <li className={isFocused ? "isfocused" : ""}>
-      <span className="player">
-        {nameRender}
-        <span className="player-symbol">{playerSymbol}</span>
-      </span>
-      {buttonRendered}
-    </li>
+    <>
+      <div className={isFocused ? "isfocused" : "notFocused"}>
+        <div className="player">{nameRender}</div>
+        {buttonRendered}
+      </div>
+      {/* <li className={isFocused ? "isfocused" : ""}>
+        <span className="player">
+          {nameRender}
+          <span className="player-symbol">{playerSymbol}</span>
+        </span>
+        {buttonRendered}
+      </li> */}
+    </>
   );
 };
 export default Player;
